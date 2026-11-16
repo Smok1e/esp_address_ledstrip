@@ -1,0 +1,10 @@
+build/
+cmake-build-debug/
+.idea
+build
+managed_components
+dependencies.lock
+sdkconfig.old
+sdkconfig
+*.lck
+

@@ -1,0 +1,85 @@
+menu "Wifi led strip"
+    choice WIFI_SECURITY
+        prompt "Wifi security protocol"
+
+        config WIFI_SEUCURITY_WPA2
+            bool "WPA2"
+
+        config WIFI_SEUCURITY_WPA3
+            bool "WPA3"
+
+    endchoice
+
+    config WIFI_SSID
+        string "WiFi SSID"
+        default ""
+        help
+            WiFi network name
+
+    config WIFI_PASSWORD
+        string "WiFi Password"
+        default ""
+        help
+            WiFi network password
+
+    config WIFI_HOSTNAME
+        string "Ledstrip hostname"
+        default "ledstrip"
+        help
+            Set ledstrip hostname that will be visible in router's DHCP list
+
+    config WIFI_DISABLE_DHCP
+        bool "Disable DHCP"
+        default n
+        help
+            Disable DHCP to set preferred ip address; This may not work with some APs
+
+    config WIFI_IP
+        string "WiFi station ip address" if WIFI_DISABLE_DHCP
+        default "192.168.1.32"
+        help
+            Set preferred network ip address
+
+    config WIFI_GATEWAY
+        string "WiFi gateway ip address" if WIFI_DISABLE_DHCP
+        default "192.168.1.1"
+        help
+            Set network gateway address
+
+    config WIFI_NETMASK
+        string "WiFi network mask" if WIFI_DISABLE_DHCP
+        default "255.255.255.0"
+        help
+            Set network mask
+
+    config SERVER_PORT
+        int "TCP server port"
+        default 1488
+        help
+            Set tcp server port
+
+    config SERVER_VERBOSE
+        bool "Verbose server"
+        default false
+        help
+            Print additional connection debug information
+
+    config LEDSTRIP_DATA_PIN
+        int "Ledstrip data pin"
+        default 6
+        help
+            Set ledstrip data pin number
+
+    config LEDSTRIP_LED_NUMBER
+        int "Ledstrip led number"
+        default 150
+        help
+            Set number of LEDs present on the ledstrip
+
+    config LEDSTRIP_UPDATE_RATE
+        int "Ledstrip update rate (HZ)"
+        default 100
+        help
+            Set ledstrip update frequency
+
+endmenu
